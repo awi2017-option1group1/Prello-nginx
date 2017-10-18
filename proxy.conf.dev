@@ -1,0 +1,11 @@
+location /prello/oauth {
+    proxy_pass http://127.0.0.1:8000;
+}
+
+location /prello/api {
+    proxy_pass http://127.0.0.1:5000;
+}
+
+location /prello {
+    proxy_pass http://127.0.0.1:3000;
+}
