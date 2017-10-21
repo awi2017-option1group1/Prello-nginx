@@ -1,0 +1,15 @@
+{
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "dependencies": {
+    "ejs": "2.3.3",
+    "express": "4.13.3",
+    "pm2": "^0.15.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/narr/heroku-nginx-node-example.git"
+  },
+  "license": "MIT"
+}
