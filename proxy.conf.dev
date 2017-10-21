@@ -1,11 +1,41 @@
-location /prello/oauth {
-    proxy_pass http://127.0.0.1:8000;
+location /auth/ {
+    proxy_pass         http://127.0.0.1:8000/;
+    proxy_redirect     off;
+    proxy_set_header   Host $host;
+    proxy_set_header   X-Real-IP $remote_addr;
+    proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header   X-Forwarded-Host $server_name;
+    proxy_set_header   X-NginX-Proxy true;
+    proxy_http_version 1.1;
+    proxy_set_header   Upgrade $http_upgrade;
+    proxy_set_header   Connection "upgrade";
+    proxy_set_header   X-Forwarded-Proto $scheme;
 }
 
-location /prello/api {
-    proxy_pass http://127.0.0.1:5000;
+location /api/ {
+    proxy_pass         http://127.0.0.1:5000/;
+    proxy_redirect     off;
+    proxy_set_header   Host $host;
+    proxy_set_header   X-Real-IP $remote_addr;
+    proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header   X-Forwarded-Host $server_name;
+    proxy_set_header   X-NginX-Proxy true;
+    proxy_http_version 1.1;
+    proxy_set_header   Upgrade $http_upgrade;
+    proxy_set_header   Connection "upgrade";
+    proxy_set_header   X-Forwarded-Proto $scheme;
 }
 
-location /prello {
-    proxy_pass http://127.0.0.1:3000;
+location / {
+    proxy_pass         http://127.0.0.1:3000/;
+    proxy_redirect     off;
+    proxy_set_header   Host $host;
+    proxy_set_header   X-Real-IP $remote_addr;
+    proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header   X-Forwarded-Host $server_name;
+    proxy_set_header   X-NginX-Proxy true;
+    proxy_http_version 1.1;
+    proxy_set_header   Upgrade $http_upgrade;
+    proxy_set_header   Connection "upgrade";
+    proxy_set_header   X-Forwarded-Proto $scheme;
 }
