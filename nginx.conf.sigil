@@ -39,17 +39,17 @@ server {
   gzip_comp_level  6;
 
   location    /auth/ {
-    proxy_pass  https://prello-auth.herokuapp.com/;
+    proxy_pass  https://photon-auth.igpolytech.fr/;
     proxy_redirect     off;
   }
 
   location    /api/ {
-    proxy_pass  https://prello-api.herokuapp.com/;
+    proxy_pass  https://photon-back.igpolytech.fr/;
     proxy_redirect     off;
   }
 
   location    / {
-    proxy_pass         https://prello-front.herokuapp.com/;
+    proxy_pass         https://photon-front.igpolytech.fr/;
     proxy_redirect     off;
   }
   include {{ $.DOKKU_ROOT }}/{{ $.APP }}/nginx.conf.d/*.conf;
