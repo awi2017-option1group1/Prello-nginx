@@ -41,16 +41,22 @@ server {
   location    /auth/ {
     proxy_pass  https://photon-auth.igpolytech.fr/;
     proxy_redirect     off;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
   }
 
   location    /api/ {
     proxy_pass  https://photon-back.igpolytech.fr/;
     proxy_redirect     off;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
   }
 
   location    / {
     proxy_pass         https://photon-front.igpolytech.fr/;
     proxy_redirect     off;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
   }
   include {{ $.DOKKU_ROOT }}/{{ $.APP }}/nginx.conf.d/*.conf;
 }
