@@ -39,15 +39,25 @@ server {
   gzip_comp_level  6;
 
   location    /auth/ {
-    proxy_pass  https://photon-auth.igpolytech.fr/;
+    proxy_pass         https://photon-auth.igpolytech.fr/;
     proxy_redirect     off;
+    proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
   }
 
   location    /api/ {
-    proxy_pass  https://photon-back.igpolytech.fr/;
+    proxy_pass         https://photon-back.igpolytech.fr/;
     proxy_redirect     off;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+  }
+
+  location /realtime/ {
+    proxy_pass         https://photon-back.igpolytech.fr/realtime/;
+    proxy_redirect     off;
+    proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
   }
@@ -55,6 +65,7 @@ server {
   location    / {
     proxy_pass         https://photon-front.igpolytech.fr/;
     proxy_redirect     off;
+    proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
   }
